@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  db:
+    image: "mysql:latest"
+    environment:
+      - MYSQL_ROOT_PASSWORD=letsgoabhik
+      - MYSQL_DATABASE=mydb
+    ports:
+      - 3306:3306
+
+  todo:
+    image: "springdevstarter:0.0.1-SNAPSHOT"
+    ports:
+      - 9090:9090
+    depends_on:
+      - db

@@ -25,7 +25,7 @@ public class TodoController {
         try {
             todoService.addTodo(newtodo);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println(e.getLocalizedMessage());
         }
         return "redirect:/";
     }
