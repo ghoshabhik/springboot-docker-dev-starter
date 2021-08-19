@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Coolest Todo App in the World</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<h1>World's best Todo App 😃</h1>
+<br/><br/>
+<form method="post" th:action="@{/add}" th:object="${newtodo}">
+    <input id="todoname" placeholder="Enter Todo Name" required th:field="*{todoname}" type="text"/><br/><br/>
+    <input id="description" placeholder="Enter Description" required th:field="*{description}"
+           type="text"/><br/><br/><br/>
+    <input type="submit" value="Create Todo">
+</form>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Id</th>
+            <th>Todo</th>
+            <th>Description</th>
+            <th>Done?</th>
+        </tr>
+        <tr th:each="todo : ${todos}">
+            <td th:utext="${todo.id}">...</td>
+            <td th:utext="${todo.todoname}">...</td>
+            <td th:utext="${todo.description}">...</td>
+            <td><a th:href="@{/del/{todoId}(todoId=${todo.id})}">Done</a></td>
+        </tr>
+    </table>
+</div>
+<br/><br/>
+<div>Copyright © abhikghosh.in</div>
+</body>
+</html>
